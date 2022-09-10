@@ -285,7 +285,11 @@ def checaPuntaje(pacman, listaDots, copiaLista):
     return 0
 
 
-def movimientoFantasmas(fanA, fanB, fanC, fanD, ticks):
+def movimientoFantasmas(phantoms, ticks) -> list[list[pygame.sprite.Sprite, int]]:
+    fanA = phantoms[0][0]
+    fanB = phantoms[1][0]
+    fanC = phantoms[2][0]
+    fanD = phantoms[3][0]
     if fanA.rect.left < 385:
         fanA.rect.left += movimiento
     if ticks >= 180:
@@ -298,1905 +302,518 @@ def movimientoFantasmas(fanA, fanB, fanC, fanD, ticks):
         if fanD.rect.left > 385:
             fanD.rect.left -= movimiento
     ticks += 1
-    return fanA, fanB, fanC, fanD, ticks
+    return [[fanA, phantoms[0][1]], [fanB, phantoms[1][1]], [fanC, phantoms[2][1]], [fanD, phantoms[3][1]]]
 
 
-def movFanA(fanA, fanARanMov):
-    if fanA.rect.left == 385 and 325 < fanA.rect.top == 365:
-        fanA.rect.top -= movimiento
-        fanARanMov = 1
-    elif fanA.rect.left == 385 and fanA.rect.top == 325:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 385 and fanA.rect.top == 285:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 385 and fanA.rect.top == 245:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 385 and fanA.rect.top == 205:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 385 and fanA.rect.top == 165:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 385 and fanA.rect.top == 125:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 385 and fanA.rect.top == 445:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 385 and fanA.rect.top == 485:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 385 and fanA.rect.top == 525:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 385 and fanA.rect.top == 565:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 3 and fanA.rect.top == 125:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 3 and fanA.rect.top == 565:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 767 and fanA.rect.top == 125:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 767 and fanA.rect.top == 565:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 45 and fanA.rect.top == 165:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 45 and fanA.rect.top == 325:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 45 and fanA.rect.top == 525:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 725 and fanA.rect.top == 165:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 725 and fanA.rect.top == 325:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 725 and fanA.rect.top == 525:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 87 and fanA.rect.top == 205:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 87 and fanA.rect.top == 325:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 87 and fanA.rect.top == 485:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 683 and fanA.rect.top == 205:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 683 and fanA.rect.top == 325:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 683 and fanA.rect.top == 485:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 129 and fanA.rect.top == 245:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 129 and fanA.rect.top == 325:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 129 and fanA.rect.top == 445:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 641 and fanA.rect.top == 245:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 641 and fanA.rect.top == 325:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 641 and fanA.rect.top == 445:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 171 and fanA.rect.top == 285:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 171 and fanA.rect.top == 325:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 171 and fanA.rect.top == 405:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 599 and fanA.rect.top == 285:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 599 and fanA.rect.top == 325:
-        fanARanMov = randrange(1, 5)
-    elif fanA.rect.left == 599 and fanA.rect.top == 405:
-        fanARanMov = randrange(1, 5)
-
-    if 129 < fanA.rect.left < 385 and 285 < fanA.rect.top < 405:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-    elif 385 < fanA.rect.left < 641 and 285 < fanA.rect.top < 405:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-    elif 171 < fanA.rect.left < 599 and 285 < fanA.rect.top <= 365:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        if fanA.rect.left != 325:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-    elif 171 < fanA.rect.left < 599 and 285 <= fanA.rect.top < 325:
-        if fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanA.rect.left != 385 and fanA.rect.top != 285:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-    elif 171 <= fanA.rect.left < 385 and 285 <= fanA.rect.top < 325:
-        if fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanA.rect.left != 171 and fanA.rect.top != 285:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-            elif fanARanMov == 2:
-                fanA.rect.left -= movimiento
-    elif 171 < fanA.rect.left <= 599 and 325 < fanA.rect.top <= 405:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.left != 599 and fanA.rect.top != 405:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-            elif fanARanMov == 4:
-                fanA.rect.left += movimiento
-    elif 171 <= fanA.rect.left < 599 and 325 < fanA.rect.top <= 405:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanA.rect.left != 171 and fanA.rect.top != 405:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-            elif fanARanMov == 2:
-                fanA.rect.left -= movimiento
-    elif 129 <= fanA.rect.left < 385 and 285 <= fanA.rect.top < 325:
-        if fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanA.rect.left != 129 and fanA.rect.top != 285:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-            elif fanARanMov == 2:
-                fanA.rect.left -= movimiento
-    elif 87 <= fanA.rect.left < 385 and 205 <= fanA.rect.top < 325:
-        if fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanA.rect.left != 87 and fanA.rect.top != 205:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-            elif fanARanMov == 2:
-                fanA.rect.left -= movimiento
-    elif 45 <= fanA.rect.left < 385 and 165 <= fanA.rect.top < 325:
-        if fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanA.rect.left != 45 and fanA.rect.top != 165:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-            elif fanARanMov == 2:
-                fanA.rect.left -= movimiento
-    elif 3 <= fanA.rect.left < 385 and 125 <= fanA.rect.top < 325:
-        if fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanA.rect.left != 3 and fanA.rect.top != 125:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-            elif fanARanMov == 2:
-                fanA.rect.left -= movimiento
-    elif 129 <= fanA.rect.left < 385 and 325 < fanA.rect.top <= 445:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanA.rect.left != 129 and fanA.rect.top != 445:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-            elif fanARanMov == 2:
-                fanA.rect.left -= movimiento
-    elif 87 <= fanA.rect.left < 385 and 325 < fanA.rect.top <= 485:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanA.rect.left != 87 and fanA.rect.top != 485:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-            elif fanARanMov == 2:
-                fanA.rect.left -= movimiento
-    elif 45 <= fanA.rect.left < 385 and 325 < fanA.rect.top <= 525:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanA.rect.left != 45 and fanA.rect.top != 525:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-            elif fanARanMov == 2:
-                fanA.rect.left -= movimiento
-    elif 3 <= fanA.rect.left < 385 and 325 < fanA.rect.top <= 565:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanA.rect.left != 3 and fanA.rect.top != 565:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-            elif fanARanMov == 2:
-                fanA.rect.left -= movimiento
-    elif 385 < fanA.rect.left <= 641 and 325 < fanA.rect.top <= 445:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.left != 641 and fanA.rect.top != 445:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-            elif fanARanMov == 4:
-                fanA.rect.left += movimiento
-    elif 385 < fanA.rect.left <= 683 and 325 < fanA.rect.top <= 485:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.left != 683 and fanA.rect.top != 485:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-            elif fanARanMov == 4:
-                fanA.rect.left += movimiento
-    elif 385 < fanA.rect.left <= 725 and 325 < fanA.rect.top <= 525:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.left != 725 and fanA.rect.top != 525:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-            elif fanARanMov == 4:
-                fanA.rect.left += movimiento
-    elif 385 < fanA.rect.left <= 767 and 325 < fanA.rect.top <= 565:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.left != 767 and fanA.rect.top != 565:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-            elif fanARanMov == 4:
-                fanA.rect.left += movimiento
-    elif 385 < fanA.rect.left <= 599 and 285 <= fanA.rect.top < 325:
-        if fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanA.rect.left != 599 and fanA.rect.top != 285:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-            elif fanARanMov == 4:
-                fanA.rect.left += movimiento
-    elif 385 < fanA.rect.left <= 641 and 245 <= fanA.rect.top < 325:
-        if fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanA.rect.left != 641 and fanA.rect.top != 245:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-            elif fanARanMov == 4:
-                fanA.rect.left += movimiento
-    elif 385 < fanA.rect.left <= 683 and 205 <= fanA.rect.top < 325:
-        if fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanA.rect.left != 683 and fanA.rect.top != 205:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-            elif fanARanMov == 4:
-                fanA.rect.left += movimiento
-    elif 385 < fanA.rect.left <= 725 and 165 <= fanA.rect.top < 325:
-        if fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanA.rect.left != 725 and fanA.rect.top != 165:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-            elif fanARanMov == 4:
-                fanA.rect.left += movimiento
-    elif 385 < fanA.rect.left <= 767 and 125 <= fanA.rect.top < 325:
-        if fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanA.rect.left != 767 and fanA.rect.top != 125:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-            elif fanARanMov == 4:
-                fanA.rect.left += movimiento
-    elif 45 <= fanA.rect.left < 87 and 165 < fanA.rect.top < 525:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanA.rect.left != 45:
-            if fanARanMov == 2:
-                fanA.rect.left -= movimiento
-    elif 129 <= fanA.rect.left < 171 and 245 < fanA.rect.top < 445:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanA.rect.left != 129:
-            if fanARanMov == 2:
-                fanA.rect.left -= movimiento
-    elif 683 <= fanA.rect.left < 725 and 205 < fanA.rect.top < 485:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanA.rect.left != 683:
-            if fanARanMov == 2:
-                fanA.rect.left -= movimiento
-    elif 45 < fanA.rect.left <= 87 and 165 < fanA.rect.top < 525:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.left != 87:
-            if fanARanMov == 4:
-                fanA.rect.left += movimiento
-    elif 599 < fanA.rect.left <= 641 and 245 < fanA.rect.top < 445:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.left != 641:
-            if fanARanMov == 4:
-                fanA.rect.left += movimiento
-    elif 683 < fanA.rect.left <= 725 and 165 < fanA.rect.top < 525:
-        if fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.left != 725:
-            if fanARanMov == 4:
-                fanA.rect.left += movimiento
-    elif 3 < fanA.rect.left < 767 and 125 <= fanA.rect.top < 165:
-        if fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.top != 125:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-    elif 87 < fanA.rect.left < 683 and 205 <= fanA.rect.top < 245:
-        if fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.top != 205:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-    elif 3 < fanA.rect.left < 767 and 125 <= fanA.rect.top < 165:
-        if fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.top != 125:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-    elif 129 < fanA.rect.left < 641 and 445 <= fanA.rect.top < 485:
-        if fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.top != 445:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-    elif 45 < fanA.rect.left < 725 and 525 <= fanA.rect.top < 565:
-        if fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanARanMov == 3:
-            fanA.rect.top += movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.top != 525:
-            if fanARanMov == 1:
-                fanA.rect.top -= movimiento
-    elif 3 < fanA.rect.left < 767 and 525 < fanA.rect.top <= 565:
-        if fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.top != 565:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-    elif 87 < fanA.rect.left < 683 and 445 < fanA.rect.top <= 485:
-        if fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.top != 485:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-    elif 129 < fanA.rect.left < 641 and 205 < fanA.rect.top <= 245:
-        if fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.top != 245:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-    elif 45 < fanA.rect.left < 725 and 125 < fanA.rect.top <= 165:
-        if fanARanMov == 4:
-            fanA.rect.left += movimiento
-        elif fanARanMov == 1:
-            fanA.rect.top -= movimiento
-        elif fanARanMov == 2:
-            fanA.rect.left -= movimiento
-        elif fanA.rect.top != 165:
-            if fanARanMov == 3:
-                fanA.rect.top += movimiento
-
-    return fanA, fanARanMov
+def selectPhantomRandomDirection(phantoms: list[tuple[pygame.sprite.Sprite, int]]):
+    for index in range(len(phantoms)):
+        phantom = phantoms[index][0]
+        selectedPhantomRandomDirection = phantoms[index][1]
+        if phantom.rect.left == 385 and phantom.rect.top == 325:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 385 and phantom.rect.top == 285:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 385 and phantom.rect.top == 245:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 385 and phantom.rect.top == 205:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 385 and phantom.rect.top == 165:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 385 and phantom.rect.top == 125:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 385 and phantom.rect.top == 445:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 385 and phantom.rect.top == 485:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 385 and phantom.rect.top == 525:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 385 and phantom.rect.top == 565:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 3 and phantom.rect.top == 125:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 3 and phantom.rect.top == 565:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 767 and phantom.rect.top == 125:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 767 and phantom.rect.top == 565:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 45 and phantom.rect.top == 165:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 45 and phantom.rect.top == 325:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 45 and phantom.rect.top == 525:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 725 and phantom.rect.top == 165:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 725 and phantom.rect.top == 325:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 725 and phantom.rect.top == 525:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 87 and phantom.rect.top == 205:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 87 and phantom.rect.top == 325:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 87 and phantom.rect.top == 485:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 683 and phantom.rect.top == 205:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 683 and phantom.rect.top == 325:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 683 and phantom.rect.top == 485:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 129 and phantom.rect.top == 245:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 129 and phantom.rect.top == 325:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 129 and phantom.rect.top == 445:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 641 and phantom.rect.top == 245:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 641 and phantom.rect.top == 325:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 641 and phantom.rect.top == 445:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 171 and phantom.rect.top == 285:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 171 and phantom.rect.top == 325:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 171 and phantom.rect.top == 405:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 599 and phantom.rect.top == 285:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 599 and phantom.rect.top == 325:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        elif phantom.rect.left == 599 and phantom.rect.top == 405:
+            selectedPhantomRandomDirection = randrange(1, 5)
+        phantoms[index] = (phantom, selectedPhantomRandomDirection)
 
 
-def movFanB(fanB, fanBRanMov):
-    if fanB.rect.left == 385 and 325 < fanB.rect.top == 365:
-        fanB.rect.top -= movimiento
-        fanBRanMov = 1
-    elif fanB.rect.left == 385 and fanB.rect.top == 325:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 385 and fanB.rect.top == 285:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 385 and fanB.rect.top == 245:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 385 and fanB.rect.top == 205:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 385 and fanB.rect.top == 165:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 385 and fanB.rect.top == 125:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 385 and fanB.rect.top == 445:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 385 and fanB.rect.top == 485:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 385 and fanB.rect.top == 525:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 385 and fanB.rect.top == 565:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 3 and fanB.rect.top == 125:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 3 and fanB.rect.top == 565:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 767 and fanB.rect.top == 125:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 767 and fanB.rect.top == 565:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 45 and fanB.rect.top == 165:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 45 and fanB.rect.top == 325:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 45 and fanB.rect.top == 525:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 725 and fanB.rect.top == 165:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 725 and fanB.rect.top == 325:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 725 and fanB.rect.top == 525:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 87 and fanB.rect.top == 205:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 87 and fanB.rect.top == 325:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 87 and fanB.rect.top == 485:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 683 and fanB.rect.top == 205:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 683 and fanB.rect.top == 325:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 683 and fanB.rect.top == 485:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 129 and fanB.rect.top == 245:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 129 and fanB.rect.top == 325:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 129 and fanB.rect.top == 445:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 641 and fanB.rect.top == 245:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 641 and fanB.rect.top == 325:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 641 and fanB.rect.top == 445:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 171 and fanB.rect.top == 285:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 171 and fanB.rect.top == 325:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 171 and fanB.rect.top == 405:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 599 and fanB.rect.top == 285:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 599 and fanB.rect.top == 325:
-        fanBRanMov = randrange(1, 5)
-    elif fanB.rect.left == 599 and fanB.rect.top == 405:
-        fanBRanMov = randrange(1, 5)
-
-    if 129 < fanB.rect.left < 385 and 285 < fanB.rect.top < 405:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-    elif 385 < fanB.rect.left < 641 and 285 < fanB.rect.top < 405:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-    elif 171 < fanB.rect.left < 599 and 285 < fanB.rect.top <= 365:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        if fanB.rect.left != 325:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-    elif 171 < fanB.rect.left < 599 and 285 <= fanB.rect.top < 325:
-        if fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanB.rect.left != 385 and fanB.rect.top != 285:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-    elif 171 <= fanB.rect.left < 385 and 285 <= fanB.rect.top < 325:
-        if fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanB.rect.left != 171 and fanB.rect.top != 285:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-            elif fanBRanMov == 2:
-                fanB.rect.left -= movimiento
-    elif 171 < fanB.rect.left <= 599 and 325 < fanB.rect.top <= 405:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.left != 599 and fanB.rect.top != 405:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-            elif fanBRanMov == 4:
-                fanB.rect.left += movimiento
-    elif 171 <= fanB.rect.left < 599 and 325 < fanB.rect.top <= 405:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanB.rect.left != 171 and fanB.rect.top != 405:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-            elif fanBRanMov == 2:
-                fanB.rect.left -= movimiento
-    elif 129 <= fanB.rect.left < 385 and 285 <= fanB.rect.top < 325:
-        if fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanB.rect.left != 129 and fanB.rect.top != 285:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-            elif fanBRanMov == 2:
-                fanB.rect.left -= movimiento
-    elif 87 <= fanB.rect.left < 385 and 205 <= fanB.rect.top < 325:
-        if fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanB.rect.left != 87 and fanB.rect.top != 205:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-            elif fanBRanMov == 2:
-                fanB.rect.left -= movimiento
-    elif 45 <= fanB.rect.left < 385 and 165 <= fanB.rect.top < 325:
-        if fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanB.rect.left != 45 and fanB.rect.top != 165:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-            elif fanBRanMov == 2:
-                fanB.rect.left -= movimiento
-    elif 3 <= fanB.rect.left < 385 and 125 <= fanB.rect.top < 325:
-        if fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanB.rect.left != 3 and fanB.rect.top != 125:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-            elif fanBRanMov == 2:
-                fanB.rect.left -= movimiento
-    elif 129 <= fanB.rect.left < 385 and 325 < fanB.rect.top <= 445:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanB.rect.left != 129 and fanB.rect.top != 445:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-            elif fanBRanMov == 2:
-                fanB.rect.left -= movimiento
-    elif 87 <= fanB.rect.left < 385 and 325 < fanB.rect.top <= 485:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanB.rect.left != 87 and fanB.rect.top != 485:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-            elif fanBRanMov == 2:
-                fanB.rect.left -= movimiento
-    elif 45 <= fanB.rect.left < 385 and 325 < fanB.rect.top <= 525:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanB.rect.left != 45 and fanB.rect.top != 525:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-            elif fanBRanMov == 2:
-                fanB.rect.left -= movimiento
-    elif 3 <= fanB.rect.left < 385 and 325 < fanB.rect.top <= 565:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanB.rect.left != 3 and fanB.rect.top != 565:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-            elif fanBRanMov == 2:
-                fanB.rect.left -= movimiento
-    elif 385 < fanB.rect.left <= 641 and 325 < fanB.rect.top <= 445:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.left != 641 and fanB.rect.top != 445:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-            elif fanBRanMov == 4:
-                fanB.rect.left += movimiento
-    elif 385 < fanB.rect.left <= 683 and 325 < fanB.rect.top <= 485:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.left != 683 and fanB.rect.top != 485:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-            elif fanBRanMov == 4:
-                fanB.rect.left += movimiento
-    elif 385 < fanB.rect.left <= 725 and 325 < fanB.rect.top <= 525:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.left != 725 and fanB.rect.top != 525:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-            elif fanBRanMov == 4:
-                fanB.rect.left += movimiento
-    elif 385 < fanB.rect.left <= 767 and 325 < fanB.rect.top <= 565:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.left != 767 and fanB.rect.top != 565:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-            elif fanBRanMov == 4:
-                fanB.rect.left += movimiento
-    elif 385 < fanB.rect.left <= 599 and 285 <= fanB.rect.top < 325:
-        if fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanB.rect.left != 599 and fanB.rect.top != 285:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-            elif fanBRanMov == 4:
-                fanB.rect.left += movimiento
-    elif 385 < fanB.rect.left <= 641 and 245 <= fanB.rect.top < 325:
-        if fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanB.rect.left != 641 and fanB.rect.top != 245:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-            elif fanBRanMov == 4:
-                fanB.rect.left += movimiento
-    elif 385 < fanB.rect.left <= 683 and 205 <= fanB.rect.top < 325:
-        if fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanB.rect.left != 683 and fanB.rect.top != 205:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-            elif fanBRanMov == 4:
-                fanB.rect.left += movimiento
-    elif 385 < fanB.rect.left <= 725 and 165 <= fanB.rect.top < 325:
-        if fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanB.rect.left != 725 and fanB.rect.top != 165:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-            elif fanBRanMov == 4:
-                fanB.rect.left += movimiento
-    elif 385 < fanB.rect.left <= 767 and 125 <= fanB.rect.top < 325:
-        if fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanB.rect.left != 767 and fanB.rect.top != 125:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-            elif fanBRanMov == 4:
-                fanB.rect.left += movimiento
-    elif 45 <= fanB.rect.left < 87 and 165 < fanB.rect.top < 525:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanB.rect.left != 45:
-            if fanBRanMov == 2:
-                fanB.rect.left -= movimiento
-    elif 129 <= fanB.rect.left < 171 and 245 < fanB.rect.top < 445:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanB.rect.left != 129:
-            if fanBRanMov == 2:
-                fanB.rect.left -= movimiento
-    elif 683 <= fanB.rect.left < 725 and 205 < fanB.rect.top < 485:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanB.rect.left != 683:
-            if fanBRanMov == 2:
-                fanB.rect.left -= movimiento
-    elif 45 < fanB.rect.left <= 87 and 165 < fanB.rect.top < 525:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.left != 87:
-            if fanBRanMov == 4:
-                fanB.rect.left += movimiento
-    elif 599 < fanB.rect.left <= 641 and 245 < fanB.rect.top < 445:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.left != 641:
-            if fanBRanMov == 4:
-                fanB.rect.left += movimiento
-    elif 683 < fanB.rect.left <= 725 and 165 < fanB.rect.top < 525:
-        if fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.left != 725:
-            if fanBRanMov == 4:
-                fanB.rect.left += movimiento
-    elif 3 < fanB.rect.left < 767 and 125 <= fanB.rect.top < 165:
-        if fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.top != 125:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-    elif 87 < fanB.rect.left < 683 and 205 <= fanB.rect.top < 245:
-        if fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.top != 205:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-    elif 3 < fanB.rect.left < 767 and 125 <= fanB.rect.top < 165:
-        if fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.top != 125:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-    elif 129 < fanB.rect.left < 641 and 445 <= fanB.rect.top < 485:
-        if fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.top != 445:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-    elif 45 < fanB.rect.left < 725 and 525 <= fanB.rect.top < 565:
-        if fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanBRanMov == 3:
-            fanB.rect.top += movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.top != 525:
-            if fanBRanMov == 1:
-                fanB.rect.top -= movimiento
-    elif 3 < fanB.rect.left < 767 and 525 < fanB.rect.top <= 565:
-        if fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.top != 565:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-    elif 87 < fanB.rect.left < 683 and 445 < fanB.rect.top <= 485:
-        if fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.top != 485:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-    elif 129 < fanB.rect.left < 641 and 205 < fanB.rect.top <= 245:
-        if fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.top != 245:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-    elif 45 < fanB.rect.left < 725 and 125 < fanB.rect.top <= 165:
-        if fanBRanMov == 4:
-            fanB.rect.left += movimiento
-        elif fanBRanMov == 1:
-            fanB.rect.top -= movimiento
-        elif fanBRanMov == 2:
-            fanB.rect.left -= movimiento
-        elif fanB.rect.top != 165:
-            if fanBRanMov == 3:
-                fanB.rect.top += movimiento
-
-    return fanB, fanBRanMov
+def initPhantomMovement(phantoms: list[tuple[pygame.sprite.Sprite, int]]):
+    phantomA = phantoms[0][0]
+    phantomARandomDirection = phantoms[0][1]
+    if phantomA.rect.left == 385 and 325 < phantomA.rect.top == 365:
+        phantomA.rect.top -= movimiento
+        phantomARandomDirection = 1  # phantom A Random Direction
+    phantomB = phantoms[1][0]
+    phantomBRandomDirection = phantoms[1][1]
+    if phantomB.rect.left == 385 and 325 < phantomB.rect.top == 365:
+        phantomB.rect.top -= movimiento
+        phantomBRandomDirection = 1  # phantom B Random Direction
+    phantomC = phantoms[2][0]
+    phantomCRandomDirection = phantoms[2][1]
+    if phantomC.rect.left == 385 and 325 < phantomC.rect.top == 365:
+        phantomC.rect.top -= movimiento
+        phantomCRandomDirection = 1  # phantom C Random Direction
+    phantomD = phantoms[3][0]
+    phantomDRandomDirection = phantoms[3][1]
+    if phantomD.rect.left == 385 and 325 < phantomD.rect.top == 365:
+        phantomD.rect.top -= movimiento
+        phantomDRandomDirection = 1  # phantom D Random Direction
+    phantoms[0] = (phantomA, phantomARandomDirection)
+    phantoms[1] = (phantomB, phantomBRandomDirection)
+    phantoms[2] = (phantomC, phantomCRandomDirection)
+    phantoms[3] = (phantomD, phantomDRandomDirection)
 
 
-def movFanC(fanC, fanCRanMov):
-    if fanC.rect.left == 385 and 325 < fanC.rect.top == 365:
-        fanC.rect.top -= movimiento
-        fanCRanMov = 1
-    elif fanC.rect.left == 385 and fanC.rect.top == 325:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 385 and fanC.rect.top == 285:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 385 and fanC.rect.top == 245:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 385 and fanC.rect.top == 205:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 385 and fanC.rect.top == 165:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 385 and fanC.rect.top == 125:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 385 and fanC.rect.top == 445:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 385 and fanC.rect.top == 485:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 385 and fanC.rect.top == 525:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 385 and fanC.rect.top == 565:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 3 and fanC.rect.top == 125:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 3 and fanC.rect.top == 565:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 767 and fanC.rect.top == 125:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 767 and fanC.rect.top == 565:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 45 and fanC.rect.top == 165:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 45 and fanC.rect.top == 325:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 45 and fanC.rect.top == 525:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 725 and fanC.rect.top == 165:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 725 and fanC.rect.top == 325:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 725 and fanC.rect.top == 525:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 87 and fanC.rect.top == 205:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 87 and fanC.rect.top == 325:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 87 and fanC.rect.top == 485:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 683 and fanC.rect.top == 205:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 683 and fanC.rect.top == 325:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 683 and fanC.rect.top == 485:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 129 and fanC.rect.top == 245:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 129 and fanC.rect.top == 325:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 129 and fanC.rect.top == 445:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 641 and fanC.rect.top == 245:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 641 and fanC.rect.top == 325:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 641 and fanC.rect.top == 445:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 171 and fanC.rect.top == 285:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 171 and fanC.rect.top == 325:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 171 and fanC.rect.top == 405:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 599 and fanC.rect.top == 285:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 599 and fanC.rect.top == 325:
-        fanCRanMov = randrange(1, 5)
-    elif fanC.rect.left == 599 and fanC.rect.top == 405:
-        fanCRanMov = randrange(1, 5)
-
-    if 129 < fanC.rect.left < 385 and 285 < fanC.rect.top < 405:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-    elif 385 < fanC.rect.left < 641 and 285 < fanC.rect.top < 405:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-    elif 171 < fanC.rect.left < 599 and 285 < fanC.rect.top <= 365:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        if fanC.rect.left != 325:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-    elif 171 < fanC.rect.left < 599 and 285 <= fanC.rect.top < 325:
-        if fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanC.rect.left != 385 and fanC.rect.top != 285:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-    elif 171 <= fanC.rect.left < 385 and 285 <= fanC.rect.top < 325:
-        if fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanC.rect.left != 171 and fanC.rect.top != 285:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-            elif fanCRanMov == 2:
-                fanC.rect.left -= movimiento
-    elif 171 < fanC.rect.left <= 599 and 325 < fanC.rect.top <= 405:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.left != 599 and fanC.rect.top != 405:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-            elif fanCRanMov == 4:
-                fanC.rect.left += movimiento
-    elif 171 <= fanC.rect.left < 599 and 325 < fanC.rect.top <= 405:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanC.rect.left != 171 and fanC.rect.top != 405:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-            elif fanCRanMov == 2:
-                fanC.rect.left -= movimiento
-    elif 129 <= fanC.rect.left < 385 and 285 <= fanC.rect.top < 325:
-        if fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanC.rect.left != 129 and fanC.rect.top != 285:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-            elif fanCRanMov == 2:
-                fanC.rect.left -= movimiento
-    elif 87 <= fanC.rect.left < 385 and 205 <= fanC.rect.top < 325:
-        if fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanC.rect.left != 87 and fanC.rect.top != 205:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-            elif fanCRanMov == 2:
-                fanC.rect.left -= movimiento
-    elif 45 <= fanC.rect.left < 385 and 165 <= fanC.rect.top < 325:
-        if fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanC.rect.left != 45 and fanC.rect.top != 165:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-            elif fanCRanMov == 2:
-                fanC.rect.left -= movimiento
-    elif 3 <= fanC.rect.left < 385 and 125 <= fanC.rect.top < 325:
-        if fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanC.rect.left != 3 and fanC.rect.top != 125:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-            elif fanCRanMov == 2:
-                fanC.rect.left -= movimiento
-    elif 129 <= fanC.rect.left < 385 and 325 < fanC.rect.top <= 445:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanC.rect.left != 129 and fanC.rect.top != 445:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-            elif fanCRanMov == 2:
-                fanC.rect.left -= movimiento
-    elif 87 <= fanC.rect.left < 385 and 325 < fanC.rect.top <= 485:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanC.rect.left != 87 and fanC.rect.top != 485:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-            elif fanCRanMov == 2:
-                fanC.rect.left -= movimiento
-    elif 45 <= fanC.rect.left < 385 and 325 < fanC.rect.top <= 525:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanC.rect.left != 45 and fanC.rect.top != 525:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-            elif fanCRanMov == 2:
-                fanC.rect.left -= movimiento
-    elif 3 <= fanC.rect.left < 385 and 325 < fanC.rect.top <= 565:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanC.rect.left != 3 and fanC.rect.top != 565:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-            elif fanCRanMov == 2:
-                fanC.rect.left -= movimiento
-    elif 385 < fanC.rect.left <= 641 and 325 < fanC.rect.top <= 445:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.left != 641 and fanC.rect.top != 445:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-            elif fanCRanMov == 4:
-                fanC.rect.left += movimiento
-    elif 385 < fanC.rect.left <= 683 and 325 < fanC.rect.top <= 485:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.left != 683 and fanC.rect.top != 485:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-            elif fanCRanMov == 4:
-                fanC.rect.left += movimiento
-    elif 385 < fanC.rect.left <= 725 and 325 < fanC.rect.top <= 525:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.left != 725 and fanC.rect.top != 525:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-            elif fanCRanMov == 4:
-                fanC.rect.left += movimiento
-    elif 385 < fanC.rect.left <= 767 and 325 < fanC.rect.top <= 565:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.left != 767 and fanC.rect.top != 565:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-            elif fanCRanMov == 4:
-                fanC.rect.left += movimiento
-    elif 385 < fanC.rect.left <= 599 and 285 <= fanC.rect.top < 325:
-        if fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanC.rect.left != 599 and fanC.rect.top != 285:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-            elif fanCRanMov == 4:
-                fanC.rect.left += movimiento
-    elif 385 < fanC.rect.left <= 641 and 245 <= fanC.rect.top < 325:
-        if fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanC.rect.left != 641 and fanC.rect.top != 245:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-            elif fanCRanMov == 4:
-                fanC.rect.left += movimiento
-    elif 385 < fanC.rect.left <= 683 and 205 <= fanC.rect.top < 325:
-        if fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanC.rect.left != 683 and fanC.rect.top != 205:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-            elif fanCRanMov == 4:
-                fanC.rect.left += movimiento
-    elif 385 < fanC.rect.left <= 725 and 165 <= fanC.rect.top < 325:
-        if fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanC.rect.left != 725 and fanC.rect.top != 165:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-            elif fanCRanMov == 4:
-                fanC.rect.left += movimiento
-    elif 385 < fanC.rect.left <= 767 and 125 <= fanC.rect.top < 325:
-        if fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanC.rect.left != 767 and fanC.rect.top != 125:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-            elif fanCRanMov == 4:
-                fanC.rect.left += movimiento
-    elif 45 <= fanC.rect.left < 87 and 165 < fanC.rect.top < 525:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanC.rect.left != 45:
-            if fanCRanMov == 2:
-                fanC.rect.left -= movimiento
-    elif 129 <= fanC.rect.left < 171 and 245 < fanC.rect.top < 445:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanC.rect.left != 129:
-            if fanCRanMov == 2:
-                fanC.rect.left -= movimiento
-    elif 683 <= fanC.rect.left < 725 and 205 < fanC.rect.top < 485:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanC.rect.left != 683:
-            if fanCRanMov == 2:
-                fanC.rect.left -= movimiento
-    elif 45 < fanC.rect.left <= 87 and 165 < fanC.rect.top < 525:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.left != 87:
-            if fanCRanMov == 4:
-                fanC.rect.left += movimiento
-    elif 599 < fanC.rect.left <= 641 and 245 < fanC.rect.top < 445:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.left != 641:
-            if fanCRanMov == 4:
-                fanC.rect.left += movimiento
-    elif 683 < fanC.rect.left <= 725 and 165 < fanC.rect.top < 525:
-        if fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.left != 725:
-            if fanCRanMov == 4:
-                fanC.rect.left += movimiento
-    elif 3 < fanC.rect.left < 767 and 125 <= fanC.rect.top < 165:
-        if fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.top != 125:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-    elif 87 < fanC.rect.left < 683 and 205 <= fanC.rect.top < 245:
-        if fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.top != 205:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-    elif 3 < fanC.rect.left < 767 and 125 <= fanC.rect.top < 165:
-        if fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.top != 125:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-    elif 129 < fanC.rect.left < 641 and 445 <= fanC.rect.top < 485:
-        if fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.top != 445:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-    elif 45 < fanC.rect.left < 725 and 525 <= fanC.rect.top < 565:
-        if fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanCRanMov == 3:
-            fanC.rect.top += movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.top != 525:
-            if fanCRanMov == 1:
-                fanC.rect.top -= movimiento
-    elif 3 < fanC.rect.left < 767 and 525 < fanC.rect.top <= 565:
-        if fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.top != 565:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-    elif 87 < fanC.rect.left < 683 and 445 < fanC.rect.top <= 485:
-        if fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.top != 485:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-    elif 129 < fanC.rect.left < 641 and 205 < fanC.rect.top <= 245:
-        if fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.top != 245:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-    elif 45 < fanC.rect.left < 725 and 125 < fanC.rect.top <= 165:
-        if fanCRanMov == 4:
-            fanC.rect.left += movimiento
-        elif fanCRanMov == 1:
-            fanC.rect.top -= movimiento
-        elif fanCRanMov == 2:
-            fanC.rect.left -= movimiento
-        elif fanC.rect.top != 165:
-            if fanCRanMov == 3:
-                fanC.rect.top += movimiento
-
-    return fanC, fanCRanMov
-
-
-def movFanD(fanD, fanDRanMov):
-    if fanD.rect.left == 385 and 325 < fanD.rect.top == 365:
-        fanD.rect.top -= movimiento
-        fanDRanMov = 1
-    elif fanD.rect.left == 385 and fanD.rect.top == 325:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 385 and fanD.rect.top == 285:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 385 and fanD.rect.top == 245:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 385 and fanD.rect.top == 205:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 385 and fanD.rect.top == 165:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 385 and fanD.rect.top == 125:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 385 and fanD.rect.top == 445:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 385 and fanD.rect.top == 485:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 385 and fanD.rect.top == 525:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 385 and fanD.rect.top == 565:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 3 and fanD.rect.top == 125:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 3 and fanD.rect.top == 565:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 767 and fanD.rect.top == 125:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 767 and fanD.rect.top == 565:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 45 and fanD.rect.top == 165:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 45 and fanD.rect.top == 325:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 45 and fanD.rect.top == 525:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 725 and fanD.rect.top == 165:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 725 and fanD.rect.top == 325:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 725 and fanD.rect.top == 525:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 87 and fanD.rect.top == 205:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 87 and fanD.rect.top == 325:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 87 and fanD.rect.top == 485:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 683 and fanD.rect.top == 205:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 683 and fanD.rect.top == 325:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 683 and fanD.rect.top == 485:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 129 and fanD.rect.top == 245:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 129 and fanD.rect.top == 325:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 129 and fanD.rect.top == 445:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 641 and fanD.rect.top == 245:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 641 and fanD.rect.top == 325:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 641 and fanD.rect.top == 445:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 171 and fanD.rect.top == 285:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 171 and fanD.rect.top == 325:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 171 and fanD.rect.top == 405:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 599 and fanD.rect.top == 285:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 599 and fanD.rect.top == 325:
-        fanDRanMov = randrange(1, 5)
-    elif fanD.rect.left == 599 and fanD.rect.top == 405:
-        fanDRanMov = randrange(1, 5)
-
-    if 129 < fanD.rect.left < 385 and 285 < fanD.rect.top < 405:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-    elif 385 < fanD.rect.left < 641 and 285 < fanD.rect.top < 405:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-    elif 171 < fanD.rect.left < 599 and 285 < fanD.rect.top <= 365:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        if fanD.rect.left != 325:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-    elif 171 < fanD.rect.left < 599 and 285 <= fanD.rect.top < 325:
-        if fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanD.rect.left != 385 and fanD.rect.top != 285:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-    elif 171 <= fanD.rect.left < 385 and 285 <= fanD.rect.top < 325:
-        if fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanD.rect.left != 171 and fanD.rect.top != 285:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-            elif fanDRanMov == 2:
-                fanD.rect.left -= movimiento
-    elif 171 < fanD.rect.left <= 599 and 325 < fanD.rect.top <= 405:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.left != 599 and fanD.rect.top != 405:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-            elif fanDRanMov == 4:
-                fanD.rect.left += movimiento
-    elif 171 <= fanD.rect.left < 599 and 325 < fanD.rect.top <= 405:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanD.rect.left != 171 and fanD.rect.top != 405:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-            elif fanDRanMov == 2:
-                fanD.rect.left -= movimiento
-    elif 129 <= fanD.rect.left < 385 and 285 <= fanD.rect.top < 325:
-        if fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanD.rect.left != 129 and fanD.rect.top != 285:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-            elif fanDRanMov == 2:
-                fanD.rect.left -= movimiento
-    elif 87 <= fanD.rect.left < 385 and 205 <= fanD.rect.top < 325:
-        if fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanD.rect.left != 87 and fanD.rect.top != 205:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-            elif fanDRanMov == 2:
-                fanD.rect.left -= movimiento
-    elif 45 <= fanD.rect.left < 385 and 165 <= fanD.rect.top < 325:
-        if fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanD.rect.left != 45 and fanD.rect.top != 165:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-            elif fanDRanMov == 2:
-                fanD.rect.left -= movimiento
-    elif 3 <= fanD.rect.left < 385 and 125 <= fanD.rect.top < 325:
-        if fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanD.rect.left != 3 and fanD.rect.top != 125:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-            elif fanDRanMov == 2:
-                fanD.rect.left -= movimiento
-    elif 129 <= fanD.rect.left < 385 and 325 < fanD.rect.top <= 445:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanD.rect.left != 129 and fanD.rect.top != 445:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-            elif fanDRanMov == 2:
-                fanD.rect.left -= movimiento
-    elif 87 <= fanD.rect.left < 385 and 325 < fanD.rect.top <= 485:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanD.rect.left != 87 and fanD.rect.top != 485:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-            elif fanDRanMov == 2:
-                fanD.rect.left -= movimiento
-    elif 45 <= fanD.rect.left < 385 and 325 < fanD.rect.top <= 525:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanD.rect.left != 45 and fanD.rect.top != 525:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-            elif fanDRanMov == 2:
-                fanD.rect.left -= movimiento
-    elif 3 <= fanD.rect.left < 385 and 325 < fanD.rect.top <= 565:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanD.rect.left != 3 and fanD.rect.top != 565:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-            elif fanDRanMov == 2:
-                fanD.rect.left -= movimiento
-    elif 385 < fanD.rect.left <= 641 and 325 < fanD.rect.top <= 445:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.left != 641 and fanD.rect.top != 445:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-            elif fanDRanMov == 4:
-                fanD.rect.left += movimiento
-    elif 385 < fanD.rect.left <= 683 and 325 < fanD.rect.top <= 485:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.left != 683 and fanD.rect.top != 485:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-            elif fanDRanMov == 4:
-                fanD.rect.left += movimiento
-    elif 385 < fanD.rect.left <= 725 and 325 < fanD.rect.top <= 525:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.left != 725 and fanD.rect.top != 525:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-            elif fanDRanMov == 4:
-                fanD.rect.left += movimiento
-    elif 385 < fanD.rect.left <= 767 and 325 < fanD.rect.top <= 565:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.left != 767 and fanD.rect.top != 565:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-            elif fanDRanMov == 4:
-                fanD.rect.left += movimiento
-    elif 385 < fanD.rect.left <= 599 and 285 <= fanD.rect.top < 325:
-        if fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanD.rect.left != 599 and fanD.rect.top != 285:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-            elif fanDRanMov == 4:
-                fanD.rect.left += movimiento
-    elif 385 < fanD.rect.left <= 641 and 245 <= fanD.rect.top < 325:
-        if fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanD.rect.left != 641 and fanD.rect.top != 245:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-            elif fanDRanMov == 4:
-                fanD.rect.left += movimiento
-    elif 385 < fanD.rect.left <= 683 and 205 <= fanD.rect.top < 325:
-        if fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanD.rect.left != 683 and fanD.rect.top != 205:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-            elif fanDRanMov == 4:
-                fanD.rect.left += movimiento
-    elif 385 < fanD.rect.left <= 725 and 165 <= fanD.rect.top < 325:
-        if fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanD.rect.left != 725 and fanD.rect.top != 165:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-            elif fanDRanMov == 4:
-                fanD.rect.left += movimiento
-    elif 385 < fanD.rect.left <= 767 and 125 <= fanD.rect.top < 325:
-        if fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanD.rect.left != 767 and fanD.rect.top != 125:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-            elif fanDRanMov == 4:
-                fanD.rect.left += movimiento
-    elif 45 <= fanD.rect.left < 87 and 165 < fanD.rect.top < 525:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanD.rect.left != 45:
-            if fanDRanMov == 2:
-                fanD.rect.left -= movimiento
-    elif 129 <= fanD.rect.left < 171 and 245 < fanD.rect.top < 445:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanD.rect.left != 129:
-            if fanDRanMov == 2:
-                fanD.rect.left -= movimiento
-    elif 683 <= fanD.rect.left < 725 and 205 < fanD.rect.top < 485:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanD.rect.left != 683:
-            if fanDRanMov == 2:
-                fanD.rect.left -= movimiento
-    elif 45 < fanD.rect.left <= 87 and 165 < fanD.rect.top < 525:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.left != 87:
-            if fanDRanMov == 4:
-                fanD.rect.left += movimiento
-    elif 599 < fanD.rect.left <= 641 and 245 < fanD.rect.top < 445:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.left != 641:
-            if fanDRanMov == 4:
-                fanD.rect.left += movimiento
-    elif 683 < fanD.rect.left <= 725 and 165 < fanD.rect.top < 525:
-        if fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.left != 725:
-            if fanDRanMov == 4:
-                fanD.rect.left += movimiento
-    elif 3 < fanD.rect.left < 767 and 125 <= fanD.rect.top < 165:
-        if fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.top != 125:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-    elif 87 < fanD.rect.left < 683 and 205 <= fanD.rect.top < 245:
-        if fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.top != 205:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-    elif 3 < fanD.rect.left < 767 and 125 <= fanD.rect.top < 165:
-        if fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.top != 125:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-    elif 129 < fanD.rect.left < 641 and 445 <= fanD.rect.top < 485:
-        if fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.top != 445:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-    elif 45 < fanD.rect.left < 725 and 525 <= fanD.rect.top < 565:
-        if fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanDRanMov == 3:
-            fanD.rect.top += movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.top != 525:
-            if fanDRanMov == 1:
-                fanD.rect.top -= movimiento
-    elif 3 < fanD.rect.left < 767 and 525 < fanD.rect.top <= 565:
-        if fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.top != 565:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-    elif 87 < fanD.rect.left < 683 and 445 < fanD.rect.top <= 485:
-        if fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.top != 485:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-    elif 129 < fanD.rect.left < 641 and 205 < fanD.rect.top <= 245:
-        if fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.top != 245:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-    elif 45 < fanD.rect.left < 725 and 125 < fanD.rect.top <= 165:
-        if fanDRanMov == 4:
-            fanD.rect.left += movimiento
-        elif fanDRanMov == 1:
-            fanD.rect.top -= movimiento
-        elif fanDRanMov == 2:
-            fanD.rect.left -= movimiento
-        elif fanD.rect.top != 165:
-            if fanDRanMov == 3:
-                fanD.rect.top += movimiento
-
-    return fanD, fanDRanMov
+def movePhantoms(phantoms):
+    for index in range(len(phantoms)):
+        phantom = phantoms[index][0]
+        phantomRandomDirection = phantoms[index][1]
+        if 129 < phantom.rect.left < 385 and 285 < phantom.rect.top < 405:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+        elif 385 < phantom.rect.left < 641 and 285 < phantom.rect.top < 405:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+        elif 171 < phantom.rect.left < 599 and 285 < phantom.rect.top <= 365:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            if phantom.rect.left != 325:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+        elif 171 < phantom.rect.left < 599 and 285 <= phantom.rect.top < 325:
+            if phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantom.rect.left != 385 and phantom.rect.top != 285:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+        elif 171 <= phantom.rect.left < 385 and 285 <= phantom.rect.top < 325:
+            if phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantom.rect.left != 171 and phantom.rect.top != 285:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+                elif phantomRandomDirection == 2:
+                    phantom.rect.left -= movimiento
+        elif 171 < phantom.rect.left <= 599 and 325 < phantom.rect.top <= 405:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.left != 599 and phantom.rect.top != 405:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+                elif phantomRandomDirection == 4:
+                    phantom.rect.left += movimiento
+        elif 171 <= phantom.rect.left < 599 and 325 < phantom.rect.top <= 405:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantom.rect.left != 171 and phantom.rect.top != 405:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+                elif phantomRandomDirection == 2:
+                    phantom.rect.left -= movimiento
+        elif 129 <= phantom.rect.left < 385 and 285 <= phantom.rect.top < 325:
+            if phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantom.rect.left != 129 and phantom.rect.top != 285:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+                elif phantomRandomDirection == 2:
+                    phantom.rect.left -= movimiento
+        elif 87 <= phantom.rect.left < 385 and 205 <= phantom.rect.top < 325:
+            if phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantom.rect.left != 87 and phantom.rect.top != 205:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+                elif phantomRandomDirection == 2:
+                    phantom.rect.left -= movimiento
+        elif 45 <= phantom.rect.left < 385 and 165 <= phantom.rect.top < 325:
+            if phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantom.rect.left != 45 and phantom.rect.top != 165:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+                elif phantomRandomDirection == 2:
+                    phantom.rect.left -= movimiento
+        elif 3 <= phantom.rect.left < 385 and 125 <= phantom.rect.top < 325:
+            if phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantom.rect.left != 3 and phantom.rect.top != 125:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+                elif phantomRandomDirection == 2:
+                    phantom.rect.left -= movimiento
+        elif 129 <= phantom.rect.left < 385 and 325 < phantom.rect.top <= 445:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantom.rect.left != 129 and phantom.rect.top != 445:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+                elif phantomRandomDirection == 2:
+                    phantom.rect.left -= movimiento
+        elif 87 <= phantom.rect.left < 385 and 325 < phantom.rect.top <= 485:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantom.rect.left != 87 and phantom.rect.top != 485:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+                elif phantomRandomDirection == 2:
+                    phantom.rect.left -= movimiento
+        elif 45 <= phantom.rect.left < 385 and 325 < phantom.rect.top <= 525:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantom.rect.left != 45 and phantom.rect.top != 525:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+                elif phantomRandomDirection == 2:
+                    phantom.rect.left -= movimiento
+        elif 3 <= phantom.rect.left < 385 and 325 < phantom.rect.top <= 565:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantom.rect.left != 3 and phantom.rect.top != 565:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+                elif phantomRandomDirection == 2:
+                    phantom.rect.left -= movimiento
+        elif 385 < phantom.rect.left <= 641 and 325 < phantom.rect.top <= 445:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.left != 641 and phantom.rect.top != 445:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+                elif phantomRandomDirection == 4:
+                    phantom.rect.left += movimiento
+        elif 385 < phantom.rect.left <= 683 and 325 < phantom.rect.top <= 485:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.left != 683 and phantom.rect.top != 485:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+                elif phantomRandomDirection == 4:
+                    phantom.rect.left += movimiento
+        elif 385 < phantom.rect.left <= 725 and 325 < phantom.rect.top <= 525:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.left != 725 and phantom.rect.top != 525:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+                elif phantomRandomDirection == 4:
+                    phantom.rect.left += movimiento
+        elif 385 < phantom.rect.left <= 767 and 325 < phantom.rect.top <= 565:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.left != 767 and phantom.rect.top != 565:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+                elif phantomRandomDirection == 4:
+                    phantom.rect.left += movimiento
+        elif 385 < phantom.rect.left <= 599 and 285 <= phantom.rect.top < 325:
+            if phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantom.rect.left != 599 and phantom.rect.top != 285:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+                elif phantomRandomDirection == 4:
+                    phantom.rect.left += movimiento
+        elif 385 < phantom.rect.left <= 641 and 245 <= phantom.rect.top < 325:
+            if phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantom.rect.left != 641 and phantom.rect.top != 245:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+                elif phantomRandomDirection == 4:
+                    phantom.rect.left += movimiento
+        elif 385 < phantom.rect.left <= 683 and 205 <= phantom.rect.top < 325:
+            if phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantom.rect.left != 683 and phantom.rect.top != 205:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+                elif phantomRandomDirection == 4:
+                    phantom.rect.left += movimiento
+        elif 385 < phantom.rect.left <= 725 and 165 <= phantom.rect.top < 325:
+            if phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantom.rect.left != 725 and phantom.rect.top != 165:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+                elif phantomRandomDirection == 4:
+                    phantom.rect.left += movimiento
+        elif 385 < phantom.rect.left <= 767 and 125 <= phantom.rect.top < 325:
+            if phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantom.rect.left != 767 and phantom.rect.top != 125:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+                elif phantomRandomDirection == 4:
+                    phantom.rect.left += movimiento
+        elif 45 <= phantom.rect.left < 87 and 165 < phantom.rect.top < 525:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantom.rect.left != 45:
+                if phantomRandomDirection == 2:
+                    phantom.rect.left -= movimiento
+        elif 129 <= phantom.rect.left < 171 and 245 < phantom.rect.top < 445:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantom.rect.left != 129:
+                if phantomRandomDirection == 2:
+                    phantom.rect.left -= movimiento
+        elif 683 <= phantom.rect.left < 725 and 205 < phantom.rect.top < 485:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantom.rect.left != 683:
+                if phantomRandomDirection == 2:
+                    phantom.rect.left -= movimiento
+        elif 45 < phantom.rect.left <= 87 and 165 < phantom.rect.top < 525:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.left != 87:
+                if phantomRandomDirection == 4:
+                    phantom.rect.left += movimiento
+        elif 599 < phantom.rect.left <= 641 and 245 < phantom.rect.top < 445:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.left != 641:
+                if phantomRandomDirection == 4:
+                    phantom.rect.left += movimiento
+        elif 683 < phantom.rect.left <= 725 and 165 < phantom.rect.top < 525:
+            if phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.left != 725:
+                if phantomRandomDirection == 4:
+                    phantom.rect.left += movimiento
+        elif 3 < phantom.rect.left < 767 and 125 <= phantom.rect.top < 165:
+            if phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.top != 125:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+        elif 87 < phantom.rect.left < 683 and 205 <= phantom.rect.top < 245:
+            if phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.top != 205:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+        elif 3 < phantom.rect.left < 767 and 125 <= phantom.rect.top < 165:
+            if phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.top != 125:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+        elif 129 < phantom.rect.left < 641 and 445 <= phantom.rect.top < 485:
+            if phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.top != 445:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+        elif 45 < phantom.rect.left < 725 and 525 <= phantom.rect.top < 565:
+            if phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantomRandomDirection == 3:
+                phantom.rect.top += movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.top != 525:
+                if phantomRandomDirection == 1:
+                    phantom.rect.top -= movimiento
+        elif 3 < phantom.rect.left < 767 and 525 < phantom.rect.top <= 565:
+            if phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.top != 565:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+        elif 87 < phantom.rect.left < 683 and 445 < phantom.rect.top <= 485:
+            if phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.top != 485:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+        elif 129 < phantom.rect.left < 641 and 205 < phantom.rect.top <= 245:
+            if phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.top != 245:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+        elif 45 < phantom.rect.left < 725 and 125 < phantom.rect.top <= 165:
+            if phantomRandomDirection == 4:
+                phantom.rect.left += movimiento
+            elif phantomRandomDirection == 1:
+                phantom.rect.top -= movimiento
+            elif phantomRandomDirection == 2:
+                phantom.rect.left -= movimiento
+            elif phantom.rect.top != 165:
+                if phantomRandomDirection == 3:
+                    phantom.rect.top += movimiento
+        phantoms[index] = (phantom, phantomRandomDirection)
 
 
 def checaChoque(listaFan, pacman):
     ModoDeJuego = 2
     xPac, yPac, wPac, hPac = pacman.rect
-    for fan in listaFan:
+    for fan, _ in listaFan:
         if ((fan.rect.left < xPac < fan.rect.left + fan.rect.width) or (
                 fan.rect.left < xPac + wPac < fan.rect.left + fan.rect.width)) and (
                 (fan.rect.top < yPac < fan.rect.top + fan.rect.height) or (
@@ -2264,6 +881,7 @@ def dibujar():
 
     # Animación
     animationCounterPacman = 0
+    ticks = 0
 
     # Movimiento
     direccion = 0
@@ -2331,22 +949,17 @@ def dibujar():
         elif ModoDeJuego == Juego:
             pygame.mixer.Sound.stop(musicaInicio)
             pygame.mixer.Sound.play(musicaJuego)
-            listaFan = []
-            listaFan.append(fantasmaA)
-            listaFan.append(fantasmaB)
-            listaFan.append(fantasmaC)
-            listaFan.append(fantasmaD)
+            phantoms_List = [(fantasmaA, 0), (fantasmaB, 0), (fantasmaC, 0), (fantasmaD, 0)]
             animationCounterPacman = animationCounterPacmanTick(animationCounterPacman)
             pacman.image = animarPacman(animationCounterPacman)
             pacman, direccion = movimientoPacman(pacman, direccion)
-            if ticksFan <= 650:
-                fantasmaA, fantasmaB, fantasmaC, fantasmaD, ticksFan = movimientoFantasmas(fantasmaA, fantasmaB,
-                                                                                           fantasmaC, fantasmaD,
-                                                                                           ticksFan)
-            fantasmaA, fanARanMov = movFanA(fantasmaA, fanARanMov)
-            fantasmaB, fanBRanMov = movFanB(fantasmaB, fanBRanMov)
-            fantasmaC, fanCRanMov = movFanC(fantasmaC, fanCRanMov)
-            fantasmaD, fanDRanMov = movFanD(fantasmaD, fanDRanMov)
+            if ticks <= 650:
+                phantoms_List = movimientoFantasmas(phantoms_List, ticks)
+
+            selectPhantomRandomDirection(phantoms_List)
+            initPhantomMovement(phantoms_List)
+            movePhantoms(phantoms_List)
+
 
             ventana.blit(Font.render("Pacman", False, BLANCO), (5, 10))
             # ventana.blit(Font.render("%03d, %03d" % (pacman.rect.left, pacman.rect.top), False, BLANCO), (5, 10))
@@ -2358,7 +971,7 @@ def dibujar():
             ventana.blit(fantasmaA.image, fantasmaA.rect)
             ventana.blit(pacman.image, pacman.rect)
 
-            ModoDeJuego = checaChoque(listaFan, pacman)
+            ModoDeJuego = checaChoque(phantoms_List, pacman)
 
             scoreTitulo = renderScoreTitle(Font)
             scoreNum = renderScore(Font, score)
@@ -2369,6 +982,7 @@ def dibujar():
 
             if len(listaDots) == 0:
                 ModoDeJuego = Gano
+            ticks += 1
         elif ModoDeJuego == GameOver:
             pygame.mixer.Sound.stop(musicaJuego)
             if not deathSoundPlayed_Flag and pygame.mixer.Sound.get_num_channels(efectoMuerte) < 5:
